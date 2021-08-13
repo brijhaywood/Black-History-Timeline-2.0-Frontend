@@ -1,19 +1,14 @@
-function App() {
-  return (
-    <div className='hero-container'>
-    <video src='/videos/video-2.mp4' autoPlay loop muted />
-    <h1>ADVENTURE AWAITS</h1>
-    <p>What are you waiting for?</p>
-    <div className='hero-btns'>
-        <button>
-        GET STARTED
-        </button>
-        <button>
-        WATCH TRAILER <i className='far fa-play-circle' />
-        </button>
-    </div>
-    </div>
-);
-}
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import HeroSection from './components/HeroSection'
+// import Posts from './components/Map';
+// import PostLoadingComponent from './components/MapLoading';
 
+function App() {
+  return(
+    <div>
+      <HeroSection></HeroSection>
+    </div>
+  )
+}
 export default App;
