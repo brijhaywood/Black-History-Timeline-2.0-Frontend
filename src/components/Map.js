@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-const Posts = (props) => {
+const Map = (props) => {
 	const { posts } = props;
 	const classes = useStyles();
 	if (!posts || posts.length === 0) return <p>Can not find any posts, sorry</p>;
@@ -42,10 +42,10 @@ const Posts = (props) => {
 		<React.Fragment>
 			<Container maxWidth="md" component="main">
 				<Grid container spacing={5} alignItems="flex-end">
-					{posts.map((post) => {
+					{posts.map((place) => {
 						return (
 							// Enterprise card is full width at sm breakpoint
-							<Grid item key={post.id} xs={12} md={4}>
+							<Grid item key={place.id} xs={12} md={4}>
 								<Card className={classes.card}>
 									<CardMedia
 										className={classes.cardMedia}
@@ -59,7 +59,7 @@ const Posts = (props) => {
 											component="h2"
 											className={classes.postTitle}
 										>
-											{post.title.substr(0, 50)}...
+											{place.title}...
 										</Typography>
 										<div className={classes.postText}>
 											<Typography
@@ -67,7 +67,7 @@ const Posts = (props) => {
 												color="textPrimary"
 											></Typography>
 											<Typography variant="p" color="textSecondary">
-												{post.excerpt.substr(0, 60)}...
+												{place.description}...
 											</Typography>
 										</div>
 									</CardContent>
@@ -80,4 +80,4 @@ const Posts = (props) => {
 		</React.Fragment>
 	);
 };
-export default Posts;
+export default Map;

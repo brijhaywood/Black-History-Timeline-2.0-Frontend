@@ -11,9 +11,9 @@ function HeroSection() {
             <button>
             GET STARTED
             </button>
-            <button>
+            {/* <button>
             WATCH TRAILER <i className='far fa-play-circle' />
-            </button>
+            </button> */}
         </div>
         </div>
     );

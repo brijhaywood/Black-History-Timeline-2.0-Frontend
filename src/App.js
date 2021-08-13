@@ -1,14 +1,47 @@
+// import React, { useEffect, useState } from 'react';
+
+// import './App.css';
+// import HeroSection from './components/HeroSection'
+// // import Posts from './components/Map';
+// // import PostLoadingComponent from './components/MapLoading';
+
+// function App() {
+//   return(
+//     <div>
+//       <HeroSection></HeroSection>
+//     </div>
+//   )
+// }
+// export default App;
+
+  
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import HeroSection from './components/HeroSection'
-// import Posts from './components/Map';
-// import PostLoadingComponent from './components/MapLoading';
+import Map from './components/Map';
+import MapLoadingComponent from './components/MapLoading';
 
 function App() {
-  return(
-    <div>
-      <HeroSection></HeroSection>
-    </div>
-  )
+	const MapLoading = MapLoadingComponent(Map);
+	const [appState, setAppState] = useState({
+		loading: false,
+		posts: null,
+	});
+
+	useEffect(() => {
+		setAppState({ loading: true });
+		const apiUrl = `http://127.0.0.1:8000/api`;
+		fetch(apiUrl)
+			.then((data) => data.json())
+			.then((posts) => {
+				setAppState({ loading: false, posts: posts });
+			});
+	}, [setAppState]);
+	return (
+		<div className="App">
+			<h1>Latest Posts</h1>
+			<MapLoading isLoading={appState.loading} posts={appState.posts} />
+		</div>
+	);
 }
+
 export default App;
