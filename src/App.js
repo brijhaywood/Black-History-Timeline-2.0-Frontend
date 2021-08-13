@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='hero-container'>
+    <video src='/videos/video-2.mp4' autoPlay loop muted />
+    <h1>ADVENTURE AWAITS</h1>
+    <p>What are you waiting for?</p>
+    <div className='hero-btns'>
+        <button>
+        GET STARTED
+        </button>
+        <button>
+        WATCH TRAILER <i className='far fa-play-circle' />
+        </button>
     </div>
-  );
+    </div>
+);
 }
 
 export default App;
