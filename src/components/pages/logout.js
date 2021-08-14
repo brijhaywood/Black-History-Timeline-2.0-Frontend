@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axiosInstance from '../axios';
+import axiosInstance from '/Users/briyanahaywood/Developer/projects/Black-History-Timeline-2.0-frontend/factsapi/src/axios';
 import { useHistory } from 'react-router-dom';
 
 export default function SignUp() {
