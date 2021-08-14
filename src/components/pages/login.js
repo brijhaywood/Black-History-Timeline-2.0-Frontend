@@ -65,7 +65,7 @@ export default function SignIn() {
 				localStorage.setItem('refresh_token', res.data.refresh);
 				axiosInstance.defaults.headers['Authorization'] =
 					'JWT ' + localStorage.getItem('access_token');
-				history.push('/');
+				history.push('/map');
 				//console.log(res);
 				//console.log(res.data);
 			});

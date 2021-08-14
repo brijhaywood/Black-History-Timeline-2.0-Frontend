@@ -65,6 +65,7 @@ import geoJson from './history-facts.json';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import './Map.css'
 // import MapInteractivity from './MapInteractivity.js'
 
 mapboxgl.accessToken =
