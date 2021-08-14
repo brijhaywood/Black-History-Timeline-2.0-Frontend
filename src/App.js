@@ -21,7 +21,6 @@ function App() {
 	}, [setAppState]);
 	return (
 		<div className="App">
-			<h1>Latest Posts</h1>
 			<MapLoading isLoading={appState.loading} posts={appState.posts} />
 		</div>
 	);

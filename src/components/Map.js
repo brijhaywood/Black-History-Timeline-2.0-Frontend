@@ -1,83 +1,160 @@
-import React from 'react';
+// import React, { useRef, useEffect, useState } from 'react';
+// import mapboxgl from 'mapbox-gl';
+// import geoJson from './history-facts.json';
+
+
+// mapboxgl.accessToken =
+//     'pk.eyJ1IjoiYmpoYXl3b29kIiwiYSI6ImNrcndzeHcycTBpcHEycXBnbGgzMGcwc2kifQ.kCAOtKmwGaF82FM8mGpbhQ';
+
+
+// const Map = () => {
+//     const mapContainerRef = useRef(null);
+
+//     const [lng, setLng] = useState(18.1616);
+//     const [lat, setLat] = useState(-10.1255);
+//     const [zoom, setZoom] = useState(1.39);
+    
+//     // Initialize map when component mounts
+//     useEffect(() => {
+//         const map = new mapboxgl.Map({
+//             container: mapContainerRef.current,
+//             style: 'mapbox://styles/bjhaywood/ckrv1wvz63g9517nzxq0nf7g8',
+//             center: [lng, lat],
+//             zoom: zoom,
+//         });
+
+//         // Create default markers
+//         geoJson.features.map((feature) => new mapboxgl.Marker()
+//             .setLngLat(feature.geometry.coordinates)
+//             .setPopup(new mapboxgl.Popup().setHTML('<h3>' + feature.properties.title + '</h3>'+'<p>' + feature.properties.description + '</p>' + `<img src=${feature.properties.image}></img>`))
+//             .addTo(map),
+            
+//         );
+
+//         // Add navigation control (the +/- zoom buttons)
+//         map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+//         map.on('move', () => {
+//         setLng(map.getCenter().lng.toFixed(4));
+//         setLat(map.getCenter().lat.toFixed(4));
+//         setZoom(map.getZoom().toFixed(2));
+//         });
+
+//         // Clean up on unmount
+//         return () => map.remove();
+//     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+//     return (
+//         <div>
+//         <div className="sidebarStyle">
+//             <div>
+//             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+//             </div>
+//         </div>
+//         <div className="map-container" ref={mapContainerRef}>
+//         </div>
+//         </div>
+// );
+// };
+
+// export default Map;
+
+import React, { useRef, useEffect, useState } from 'react';
+import mapboxgl from 'mapbox-gl';
+import geoJson from './history-facts.json';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import Slider from '@material-ui/core/Slider';
+// import MapInteractivity from './MapInteractivity.js'
 
-const useStyles = makeStyles((theme) => ({
-	cardMedia: {
-		paddingTop: '56.25%', // 16:9
-	},
-	link: {
-		margin: theme.spacing(1, 1.5),
-	},
-	cardHeader: {
-		backgroundColor:
-			theme.palette.type === 'light'
-				? theme.palette.grey[200]
-				: theme.palette.grey[700],
-	},
-	postTitle: {
-		fontSize: '16px',
-		textAlign: 'left',
-	},
-	postText: {
-		display: 'flex',
-		justifyContent: 'left',
-		alignItems: 'baseline',
-		fontSize: '12px',
-		textAlign: 'left',
-		marginBottom: theme.spacing(2),
-	},
-}));
+mapboxgl.accessToken =
+    'pk.eyJ1IjoiYmpoYXl3b29kIiwiYSI6ImNrcndzeHcycTBpcHEycXBnbGgzMGcwc2kifQ.kCAOtKmwGaF82FM8mGpbhQ';
 
-const Map = (props) => {
-	const { posts } = props;
-	const classes = useStyles();
-	if (!posts || posts.length === 0) return <p>Can not find any posts, sorry</p>;
-	return (
-		<React.Fragment>
-			<Container maxWidth="md" component="main">
-				<Grid container spacing={5} alignItems="flex-end">
-					{posts.map((place) => {
-						return (
-							// Enterprise card is full width at sm breakpoint
-							<Grid item key={place.id} xs={12} md={4}>
-								<Card className={classes.card}>
-									<CardMedia
-										className={classes.cardMedia}
-										image="https://source.unsplash.com/random"
-										title="Image title"
-									/>
-									<CardContent className={classes.cardContent}>
-										<Typography
-											gutterBottom
-											variant="h6"
-											component="h2"
-											className={classes.postTitle}
-										>
-											{place.title}...
-										</Typography>
-										<div className={classes.postText}>
-											<Typography
-												component="p"
-												color="textPrimary"
-											></Typography>
-											<Typography variant="p" color="textSecondary">
-												{place.description}...
-											</Typography>
-										</div>
-									</CardContent>
-								</Card>
-							</Grid>
-						);
-					})}
-				</Grid>
-			</Container>
-		</React.Fragment>
-	);
+
+const Map = () => {
+    const mapContainerRef = useRef(null);
+    const [lng, setLng] = useState(18.1616);
+    const [lat, setLat] = useState(-10.1255);
+    const [zoom, setZoom] = useState(1.39);
+    const useStyles = makeStyles({
+        root: {
+            width: 300,
+            height: 1000,
+        },
+    });
+    
+    function valuetext(value) {
+        return `${value}°C`;
+    }
+    
+    const RangeSlider = () => {
+        const classes = useStyles();
+        const [value, setValue] = React.useState([0, 2021]);
+    
+        const handleChange = (e, newValue) => {
+            setValue(newValue);
+        };
+    
+        return (
+            <div className={classes.root}>
+            <Typography id="range-slider" gutterBottom>
+                Temperature range
+            </Typography>
+            <Slider
+                value={value}
+                min={1900}
+                max={2021}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                getAriaValueText={valuetext}
+            />
+            </div>
+        );
+    }
+
+    // Initialize map when component mounts
+    useEffect(() => {
+        const map = new mapboxgl.Map({
+        container: mapContainerRef.current,
+        style: 'mapbox://styles/bjhaywood/ckrv1wvz63g9517nzxq0nf7g8',
+        center: [lng, lat],
+        zoom: zoom,
+        });
+
+        // Create default markers
+        geoJson.features.map((feature) => new mapboxgl.Marker()
+            .setLngLat(feature.geometry.coordinates)
+            .setPopup(new mapboxgl.Popup().setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>' + `<img src=${feature.properties.image}></img>`))
+            .addTo(map),
+            
+        );
+
+        // Add navigation control (the +/- zoom buttons)
+        map.addControl(new mapboxgl.NavigationControl(), 'top-right');
+
+        map.on('move', () => {
+        setLng(map.getCenter().lng.toFixed(4));
+        setLat(map.getCenter().lat.toFixed(4));
+        setZoom(map.getZoom().toFixed(2));
+        });
+
+        // Clean up on unmount
+        return () => map.remove();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    return (
+        <div>
+        <div className="sidebarStyle">
+            <div>
+            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+            </div>
+        </div>
+        <div className="map-container" ref={mapContainerRef}>
+            <RangeSlider></RangeSlider>
+        </div>
+        </div>
+);
 };
+
 export default Map;
