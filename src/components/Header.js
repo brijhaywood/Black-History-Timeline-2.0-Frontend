@@ -8,6 +8,7 @@ import { NavLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 
+
 const useStyles = makeStyles((theme) => ({
 	appBar: {
 		borderBottom: `1px solid ${theme.palette.divider}`,
@@ -21,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Header() {
+	console.log()
 	const classes = useStyles();
 	return (
 		<React.Fragment>
@@ -58,6 +60,7 @@ function Header() {
 							Register
 						</Link>
 					</nav>
+					<nav>
 					<Button
 						href="#"
 						color="primary"
@@ -65,8 +68,7 @@ function Header() {
 						className={classes.link}
 						component={NavLink}
 						to="/login"
-					>
-						Login
+					>LogIn
 					</Button>
 					<Button
 						href="#"
@@ -78,6 +80,7 @@ function Header() {
 					>
 						Logout
 					</Button>
+					</nav>
 				</Toolbar>
 			</AppBar>
 		</React.Fragment>

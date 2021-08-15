@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axiosInstance from '/Users/briyanahaywood/Developer/projects/Black-History-Timeline-2.0-frontend/factsapi/src/axios';
 import { useHistory } from 'react-router-dom';
 
+
 export default function SignUp() {
 	const history = useHistory();
+
 
 	useEffect(() => {
 		const response = axiosInstance.post('user/logout/blacklist/', {
