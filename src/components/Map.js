@@ -68,8 +68,7 @@ import Slider from '@material-ui/core/Slider';
 import './Map.css'
 // import MapInteractivity from './MapInteractivity.js'
 
-mapboxgl.accessToken =
-    'pk.eyJ1IjoiYmpoYXl3b29kIiwiYSI6ImNrcndzeHcycTBpcHEycXBnbGgzMGcwc2kifQ.kCAOtKmwGaF82FM8mGpbhQ';
+mapboxgl.accessToken = process.env.REACT_APP_MAP_KEY
 
 
 const Map = () => {
