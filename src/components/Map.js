@@ -118,7 +118,7 @@ const Map = () => {
     useEffect(() => {
         const map = new mapboxgl.Map({
         container: mapContainerRef.current,
-        style: 'mapbox://styles/bjhaywood/ckrv1wvz63g9517nzxq0nf7g8',
+        style: 'mapbox://styles/mapbox/satellite-v9',
         center: [lng, lat],
         zoom: zoom,
         });

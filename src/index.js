@@ -5,7 +5,6 @@ import './index.css';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import App from './App';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Register from './components/pages/register'
 import Login from './components/pages/login';
 import Logout from './components/pages/logout';
@@ -22,7 +21,6 @@ const routing = (
 				<Route path="/logout" component={Logout} />
 				<Route path="/map" component={Map} />
 			</Switch>
-			<Footer />
 		</React.StrictMode>
 	</Router>
 );
