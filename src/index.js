@@ -5,11 +5,11 @@ import './index.css';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import App from './App';
 import Header from './components/Header';
-import Register from './components/pages/register'
-import Login from './components/pages/login';
-import Logout from './components/pages/logout';
+import Register from './components/register'
+import Login from './components/login';
+import Logout from './components/logout';
 import Map from './components/Map';
-import AboutUs from './components/pages/about-us';
+import AboutUs from './components/about-us';
 
 const routing = (
 	<Router>
