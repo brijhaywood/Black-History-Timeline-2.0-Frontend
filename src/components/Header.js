@@ -111,7 +111,8 @@ function Header() {
 				className={clsx(classes.appBar, {
 					[classes.appBarShift]: open,
 				})}
-				style={{backgroundColor: 'white'}}
+				style={{backgroundColor: 'black'}}
+	
 			>
 				<Toolbar className={classes.toolbar}>
 					<IconButton
@@ -121,11 +122,11 @@ function Header() {
 						edge="start"
 						className={clsx(classes.menuButton, open && classes.hide)}
 					>
-						<MenuIcon />
+						<MenuIcon style={{fill: "white"}}/>
 					</IconButton>
 					<Typography
 						variant="h6"
-						color="inherit"
+						color="pink"
 						noWrap
 						className={classes.toolbarTitle}
 					>
@@ -133,7 +134,7 @@ function Header() {
 							component={NavLink}
 							to="/"
 							underline="none"
-							color="yellow"
+							style={{color: 'white'}}
 						>
 							Our Story 
 						</Link>
@@ -145,6 +146,7 @@ function Header() {
 							className={classes.link}
 							component={NavLink}
 							to="/register"
+							style={{color: 'white'}}
 						>
 							Register
 						</Link>
@@ -188,19 +190,10 @@ function Header() {
 			</div>
 			<Divider />
 			<List>
-				<Link
-								color="white"
-								href="#"
-								className={classes.link}
-								component={NavLink}
-								to="/about-us"
-							> About Us </Link>
-			{['About Us', 'Sources'].map((text, index) => (
-				<ListItem button key={text} component={Link} to="/about">
-				<ListItemIcon>{index % 2 === 0 ? <InfoIcon /> : <MailIcon />}</ListItemIcon>
-				<ListItemText primary={text} />
+				<ListItem button component={Link} href="/about-us">
+				<ListItemIcon><InfoIcon/> </ListItemIcon>
+				<ListItemText primary="About Us"/>
 				</ListItem>
-			))}
 			</List>
 			</Drawer>
 		</React.Fragment>
