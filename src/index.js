@@ -9,6 +9,7 @@ import Register from './components/pages/register'
 import Login from './components/pages/login';
 import Logout from './components/pages/logout';
 import Map from './components/Map';
+import AboutUs from './components/pages/about-us';
 
 const routing = (
 	<Router>
@@ -20,6 +21,7 @@ const routing = (
 				<Route path="/login" component={Login} />
 				<Route path="/logout" component={Logout} />
 				<Route path="/map" component={Map} />
+				<Route path='/about-us' component={AboutUs}/>
 			</Switch>
 		</React.StrictMode>
 	</Router>
