@@ -66,7 +66,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import './Map.css'
-// import MapInteractivity from './MapInteractivity.js'
+import {TwitterShareButton, TwitterIcon} from "react-share";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmpoYXl3b29kIiwiYSI6ImNrcndzeHcycTBpcHEycXBnbGgzMGcwc2kifQ.kCAOtKmwGaF82FM8mGpbhQ';
 
@@ -98,7 +98,7 @@ const Map = () => {
     
         return (
             <div className={classes.root}>
-            <Typography id="range-slider" gutterBottom>
+            {/* <Typography id="range-slider" gutterBottom>
                 Temperature range
             </Typography>
             <Slider
@@ -109,7 +109,7 @@ const Map = () => {
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
                 getAriaValueText={valuetext}
-            />
+            /> */}
             </div>
         );
     }
@@ -126,7 +126,8 @@ const Map = () => {
         // Create default markers
         geoJson.features.map((feature) => new mapboxgl.Marker()
             .setLngLat(feature.geometry.coordinates)
-            .setPopup(new mapboxgl.Popup().setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>' + `<img src=${feature.properties.image}></img>`))
+            .setPopup(new mapboxgl.Popup().setMaxWidth('800px')
+            .setHTML('<h3>' + feature.properties.title + '</h3>' + '<p>' + feature.properties.description + '</p>' + `<img src=${feature.properties.image}></img>`))
             .addTo(map),
             
         );
@@ -147,9 +148,9 @@ const Map = () => {
     return (
         <div>
         <div className="sidebarStyle">
-            <div>
+            {/* <div>
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-            </div>
+            </div> */}
         </div>
         <div className="map-container" ref={mapContainerRef}>
             <RangeSlider></RangeSlider>
