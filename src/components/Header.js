@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
+import './Header.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,11 +19,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 	toolbarTitle: {
 		flexGrow: 1,
+		align: "center"
 	},
 }));
 
 function Header() {
-	console.log()
 	const classes = useStyles();
 	return (
 		<React.Fragment>
@@ -32,6 +33,7 @@ function Header() {
 				color="default"
 				elevation={0}
 				className={classes.appBar}
+				style={{backgroundColor: 'black'}}
 			>
 				<Toolbar className={classes.toolbar}>
 					<Typography
@@ -44,14 +46,14 @@ function Header() {
 							component={NavLink}
 							to="/"
 							underline="none"
-							color="textPrimary"
+							color="yellow"
 						>
 							Our Story
 						</Link>
 					</Typography>
 					<nav>
 						<Link
-							color="textPrimary"
+							color="white"
 							href="#"
 							className={classes.link}
 							component={NavLink}

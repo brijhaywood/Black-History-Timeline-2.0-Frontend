@@ -14,7 +14,7 @@ import Map from './components/Map';
 const routing = (
 	<Router>
 		<React.StrictMode>
-			<Header />
+			<Header/>
 			<Switch>
 				<Route exact path="/" component={App} />
 				<Route path="/register" component={Register} />
